@@ -151,19 +151,55 @@ $("#header").append(formattedBioPic);
 var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.message)
 $("#header").append(formattedMessage);
 
-if (bio.skills.length > 0) {
-  $("#header").append(HTMLskillsStart);
-  var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-  $("#header").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-  $("#header").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-  $("#header").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-  $("#header").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
-  $("#header").append(formattedSkill);
-}; 
+//if (bio.skills.length > 0) {
+//  $("#header").append(HTMLskillsStart);
+//  for (var i = bio.skills.length() - 1; bio.skills >= 0; i = i -1) {
+//  	  var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+//  $("#header").append(formattedSkill);	
+//  }
 
+//}; 
+
+//Lesson 2 exercises
+
+function makeCourse() {
+
+};
+
+var cameron = {}
+cameron.job = "course dev";
+var courses = 0;
+while (cameron.job === "course dev") {
+	makeCourse();
+	courses = courses +1;
+	console.log(cameron.job);
+	if (courses === 10) {
+		cameron.job = "learning specialist";
+	}
+}
+
+console.log(cameron.job);
+
+for (var i = 0; i< 9; i++) {
+	console.log(i);
+}
+
+var countries = ["Germany", "USA", "Brazil", "Argentina", "Netherlands"];
+for (country in countries) {
+	console.log(countries[country]);
+}
+
+
+
+// back to the resume building
+
+
+for (job in work.jobs) {
+	$("#workExperience").append(HTMLworkStart);
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+	var formattedEmployerTitle = formattedEmployer + formattedTitle;	
+	$(".work-entry:last").append(formattedEmployerTitle);
+}
 
 
