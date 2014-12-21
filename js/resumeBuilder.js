@@ -1,131 +1,169 @@
-$("#main").append("Mary Lou Cooke");
 
-var email = "marylou@abouttimect.com";
-var newEmail = email.replace("abouttimect.com", "gmail");
-console.log(newEmail);
-
-var awesomeThoughts = "I am AWESOME!";
-var funThoughts = awesomeThoughts.replace("AWESOME", "FUN");
-console.log(funThoughts);
-
-$("#main").append(funThoughts);
-
-var name = "Mary Lou Cooke";
-var formattedName = HTMLheaderName.replace("%data%", name);
-
-
-var role = "Web Developer";
-var formattedRole = HTMLheaderRole.replace("%data%", role);
-$("#main").prepend(formattedRole);
-$("#main").prepend(formattedName);
-
-var s = "audacity";
-
-var udacityizer = function(s) {
-	s = s[1].toUpperCase() + s.slice(2);
-	return s;
-};
-console.log(udacityizer(s));
-
-var skills = ["awesomeness", "programming", "JS"];
-$("#main").append(skills);
-$("#main").append(skills[0]);
-
-console.log(skills.length);
-
-$("#main").append(skills.length);
-
-var sampleArray = [0, 0, 7];
-var incrementLastArrayElement = function(_array) {
-	var newArray = [];
-	newArray = _array.slice(0);
-    var lastElement = newArray.pop();
-    newArray.push(lastElement + 1);
-   	return newArray;
-}
-
-console.log(incrementLastArrayElement(sampleArray));
-
-var name = "AlbERt EINstEiN";
-function nameChanger(oldName) {
-	var finalName = oldName;
-	var nameArray = oldName.split(" ");
-	nameArray[1] = nameArray[1].toUpperCase();
-	nameArray[0] = nameArray[0].slice(0,1).toUpperCase() + nameArray[0].slice(1).toLowerCase();
-	finalName = nameArray.join(" ");
-	return finalName;
-
-};
-
-console.log(nameChanger(name));
-//object literal notation
 var bio = {
-"name": "Mary Lou Cooke",
-"skills": [
-	"awesomeness", "programming", "JS"],
-"role": "Web Developer",
-"contacts": {
-	"email": "mlc@maryloucooke.com",
-	"location": "Connecticut",
-	"mobile": "860-301-5739",
-	"github": "marylou17"
-},
-"welcomeMessage": "Greetings!",
-"bioPic": "images/mlcLogo.png"
+	"name": "Mary Lou Cooke",
+	"role": "Web Developer",
+	"message": "Greetings!",
+	"bioPic": "images/fry.jpg",
+	"contacts": {
+		"mobile": "860.301.5739",
+		"email": "mlc@maryloucooke.com",
+		"github": "marylou17",
+		"location": "Connecticut"	
+		},	
+	"skills": ["javaScript", "HTML", "CSS", "Graphic Design", "Audio Composition"]	
 }
-$("#main").append(bio.name);
 
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formattedSkills = HTMLskills.replace("%data%", bio.skills);
-var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
-var formattedPhoto = HTMLbioPic.replace("%data%", bio.bioPic);
-var formattedContactMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+var work = {
+	"jobs": [
+	{
+	"employer": "About Time",
+	"title": "Business Manager",
+	"location": "Higganum, CT",
+	"dates": "2005 - 2014",
+	"description": "Manage the financial, marketing, and technical aspects of running a small business"
+	},
+	{
+	"employer": "Electronic Data Systems",
+	"title": "Senior Systems Administrator",
+	"location": "New Britain, CT",
+	"dates": "1999 - 20105",
+	"description": "Managed the network and user experience for a medium sized LAN"
+	}
+	]
+}
 
-$("#main").append(formattedName);
-$("#main").append(formattedRole);
-$("#main").append(formattedSkills[0]);
-$("#main").append(formattedMessage);
-$("#main").append(formattedPhoto);
-$("#main").append(formattedContactMobile);
-
-//bracket notation
-bio["location"] = "Mountain View";
-$("#main").append(bio.location);
-
-//dot notation
-
-var work = {};
-	work.employer = "About Time",
-	work.position = "business Manager",
-	work.years = 3
-	
-
-//brack notation for object creation
-var education = {};
-
-education["city"] = "Mountain View";
-education["name"] = "Udacity";
-education["years"] = "2014";
-
-$("#main").append(work["postion"]);
-$("#main").append(education.name);
+var projects = {
+	"projects": [
+	{
+	"title": "maryloucooke.com",
+	"dates": "2014",
+	"description": "Personal portfolio website",
+	"images": ["http://maryloucooke.com/img/mlcLogo.png"]
+	},
+	{
+	"title": "Computer Graphics",
+	"dates": "2014",
+	"description": "Adobe InDesign, Illustrator, and PhotoShop Projects",
+	"images": ["http://maryloucooke.com/img/edwardianScriptAnimal-pheonix.png", "illustratedPhoto.png", "bookCover-one-fine-day-brookmyre-med.png", "colorizedPhoto.png", "PageofText-minyaNovelle.png"]	
+	},
+	{
+	"title": "Web Design",
+	"dates": "2014",
+	"description": "Tourism Website for the town of Chester, CT",
+	"images": ["http://maryloucooke.com/img/visitChesterWebsite.png"]
+	},
+	{
+	"title": "Digital Multimedia",
+	"dates": "2014",
+	"description": "Animated and still photo videos with original music",
+	"images": ["http://maryloucooke.com/img/mlcLogo.png"]
+	}	
+	]
+}
 
 var education = {
 	"schools": [
 	{
-		"name": "Eckerd College",
-		"city": "St Petersburg, FL, US",
-		"degree": "BA",
-		"major": ["CompSci", "French"]
+	"name": "Middlesex Community College",
+	"location": "Middletown, CT",
+	"degree": "Associates",
+	"majors": ["Multi-media Arts"],
+	"dates": "2014",
+	"url": "http://mxcc.edu"
+	},
+
+	{
+	"name": "Udacity.com",
+	"location": "Mountain View, CA",
+	"degree": "Nano Degree",
+	"majors": ["Web Developer"],
+	"dates": "2014",
+	"url": "http://udacity.com"
+	}
+	],
+	"onLineCourses": [
+	{
+		"title": "Intro to Digital Arts",
+		"school": "Middlsex CC",
+		"dates": "2014",
+		"url": "http://mxcc.edu"
 	},
 	{
-		"name": "Nova College",
-		"city": "Ft Lauderdale, FL, US",
-		"degree": "Masters",
-		"major": ["CompSci"]		
+		"title": "Computer Graphics",
+		"school": "Middlsex CC",
+		"dates": "2014",
+		"url": "http://mxcc.edu"
+	},
+	{
+		"title": "Intermediate Algebra",
+		"school": "Middlsex CC",
+		"dates": "2014",
+		"url": "http://mxcc.edu"
+	},
+	{
+		"title": "Web Design I",
+		"school": "Middlsex CC",
+		"dates": "2014",
+		"url": "http://mxcc.edu"
+	},
+	{			
+		"title": "Intro the HTML and CSS",
+		"school": "Udacity",
+		"dates": "2014",
+		"url": "https://www.udacity.com/course/ud304"
+	},
+	{			
+		"title": "How to Use Git and GitHub",
+		"school": "Udacity",
+		"dates": "2014",
+		"url": "https://https://www.udacity.com/course/ud775"
+	},		 
+	{			
+		"title": "JavaScript Basics",
+		"school": "Udacity",
+		"dates": "2014",
+		"url": "hhttps://www.udacity.com/course/ud804"
 	}
-	]
-};
+]	
+}
+
+
+
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+$("#header").prepend(formattedRole);
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+$("#header").prepend(formattedName);
+
+
+
+var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile)
+$("#topContacts").append(formattedMobile);
+var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email)
+$("#topContacts").append(formattedEmail);
+var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github)
+$("#topContacts").append(formattedGithub);
+var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location)
+$("#topContacts").append(formattedLocation);
+var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic)
+
+
+$("#header").append(formattedBioPic);
+var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.message)
+$("#header").append(formattedMessage);
+
+if (bio.skills.length > 0) {
+  $("#header").append(HTMLskillsStart);
+  var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+  $("#header").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+  $("#header").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+  $("#header").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+  $("#header").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
+  $("#header").append(formattedSkill);
+}; 
+
 
 
