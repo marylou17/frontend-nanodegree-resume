@@ -82,7 +82,7 @@ var education = {
 	"url": "http://udacity.com"
 	}
 	],
-	"onLineCourses": [
+	"onlineClasses": [
 	{
 		"title": "Intro to Digital Arts",
 		"school": "Middlsex CC",
@@ -125,18 +125,18 @@ var education = {
 		"dates": "2014",
 		"url": "hhttps://www.udacity.com/course/ud804"
 	}
-]	
+	]	
 }
 
 
-
+// Add Name and role
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 $("#header").prepend(formattedRole);
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 $("#header").prepend(formattedName);
 
 
-
+// Add contact information
 var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile)
 $("#topContacts").append(formattedMobile);
 var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email)
@@ -146,6 +146,7 @@ $("#topContacts").append(formattedGithub);
 var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location)
 $("#topContacts").append(formattedLocation);
 
+// Add Photo and Message
 var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic)
 $("#header").append(formattedBioPic);
 var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.message)
@@ -162,41 +163,7 @@ if (bio.skills.length > 0) {
 
 }; 
 
-//Lesson 2 exercises
-
-function makeCourse() {
-
-};
-
-var cameron = {}
-cameron.job = "course dev";
-var courses = 0;
-while (cameron.job === "course dev") {
-	makeCourse();
-	courses = courses +1;
-	console.log(cameron.job);
-	if (courses === 10) {
-		cameron.job = "learning specialist";
-	}
-}
-
-console.log(cameron.job);
-
-for (var i = 0; i< 9; i++) {
-	console.log(i);
-}
-
-var countries = ["Germany", "USA", "Brazil", "Argentina", "Netherlands"];
-for (country in countries) {
-	console.log(countries[country]);
-}
-
-
-
-// back to the resume building
-
-
-
+// Add Work Experience
 var displayWork = function() {
 	for (job in work.jobs) {
 	$("#workExperience").append(HTMLworkStart);
@@ -219,16 +186,17 @@ var displayWork = function() {
 
 displayWork();
 
+// Add locations to an array for the map
 var locationizer = function(work_obj) {
 	work = work_obj;
 	var workLocationArray = [];
 	for (var job in work.jobs) {
-		workLocationArray.push(work.jobs[job].location);
-		
+		workLocationArray.push(work.jobs[job].location);	
 	}
 	return workLocationArray;
 }
-//make an international name change button
+
+// Add an international name change button
 var inName = function(name) {
  	nameArray = [];
  	var finalName = bio.name;
@@ -237,18 +205,15 @@ var inName = function(name) {
 	nameArray[2] = nameArray[2].toUpperCase();
 	finalName = nameArray.join(" ");
 	return finalName;
-
-
-	
 	var workLocationArray = [];
 	for (var job in work.jobs) {
-		workLocationArray.push(work.jobs[job].location);
-		
+		workLocationArray.push(work.jobs[job].location);	
 	}
 	return workLocationArray;
 }
 $("#main").append(internationalizeButton);
 
+// Add projects
 projects.display = function() {
 	for (project in projects.projects) {
 	$("#projects").append(HTMLprojectStart);
@@ -274,6 +239,61 @@ projects.display = function() {
 
 projects.display();
 
+// Add Education
+education.display = function() {
+	for (school in education.schools) {
+	$("#education").append(HTMLschoolStart);
+
+	var formattedName = HTMLschoolName.replace("%data%",education.schools[school].name)
+	$(".education-entry:last").append(formattedName);
+	
+	var formattedLocation = HTMLschoolLocation.replace("%data%",education.schools[school].location)
+	$(".education-entry:last").append(formattedLocation);
+
+	var formattedUrl = HTMLschoolLocation.replace("%data%",education.schools[school].url)
+	$(".education-entry:last").append(formattedUrl);
+
+	var formattedDegree = HTMLschoolDegree.replace("%data%",education.schools[school].degree)
+	$(".education-entry:last").append(formattedDegree);
+
+		if (education.schools[school].majors.length > 0) {
+			for (major in education.schools[school].majors) {
+			var formattedMajors = HTMLschoolMajor.replace("%data%",education.schools[school].majors[major])
+			$(".education-entry:last").append(formattedMajors);
+	}
+	}
+	var formattedDates = HTMLschoolDates.replace("%data%",education.schools[school].dates)
+	$(".education-entry:last").append(formattedDates);
+}
+}
+education.display();
+
+education.onlineClasses.display = function() {
+	if (education.onlineClasses.length > 0) {
+		for (onlineClass in education.onlineClasses) {
+		$("#education").append(HTMLonlineClasses);
+	}
+	}	
+	for (course in education.onlineClasses) {
+	// $("#education").append(HTMLonlineClasses);
+
+	var formattedTitle = HTMLonlineTitle.replace("%data%",education.onlineClasses[course].title)
+	$(".education-entry:last").append(formattedTitle);
+	
+	var formattedSchool = HTMLonlineSchool.replace("%data%",education.onlineClasses[course].school)
+	$(".education-entry:last").append(formattedSchool);
+
+	var formattedDates = HTMLonlineDates.replace("%data%",education.onlineClasses[course].dates)
+	$(".education-entry:last").append(formattedDates);
+
+	var formattedUrl = HTMLonlineURL.replace("%data%",education.onlineClasses[course].url)
+	$(".education-entry:last").append(formattedUrl);
+}
+}
+
+education.onlineClasses.display();	
+
+// Add map 
 $("#main").append(googleMap);
 $("#mapDiv").append(googleMap);
 
