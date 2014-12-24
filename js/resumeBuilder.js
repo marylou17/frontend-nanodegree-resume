@@ -26,7 +26,7 @@ var work = {
 	"employer": "Electronic Data Systems",
 	"title": "Senior Systems Administrator",
 	"location": "New Britain, CT",
-	"dates": "1999 - 20105",
+	"dates": "1999 - 2005",
 	"description": "Managed the network and user experience for a medium sized LAN"
 	}
 	]
@@ -38,27 +38,28 @@ var projects = {
 	"title": "maryloucooke.com",
 	"dates": "2014",
 	"description": "Personal portfolio website",
-	"images": ["http://maryloucooke.com/img/mlcLogo.png"]
+	"images": ["images/mlcLogo.png"]
 	},
 	{
 	"title": "Computer Graphics",
 	"dates": "2014",
 	"description": "Adobe InDesign, Illustrator, and PhotoShop Projects",
-	"images": ["http://maryloucooke.com/img/edwardianScriptAnimal-pheonix.png", "illustratedPhoto.png", "bookCover-one-fine-day-brookmyre-med.png", "colorizedPhoto.png", "PageofText-minyaNovelle.png"]	
+	"images": ["images/edwardianScriptAnimal-pheonix.png"]	
 	},
 	{
 	"title": "Web Design",
 	"dates": "2014",
 	"description": "Tourism Website for the town of Chester, CT",
-	"images": ["http://maryloucooke.com/img/visitChesterWebsite.png"]
+	"images": ["images/visitChesterWebsite.png"]
 	},
 	{
 	"title": "Digital Multimedia",
 	"dates": "2014",
 	"description": "Animated and still photo videos with original music",
-	"images": ["http://maryloucooke.com/img/mlcLogo.png"]
+	"images": ["images/designPrincipals.png"]
 	}	
 	]
+
 }
 
 var education = {
@@ -144,21 +145,22 @@ var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github)
 $("#topContacts").append(formattedGithub);
 var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location)
 $("#topContacts").append(formattedLocation);
+
 var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic)
-
-
 $("#header").append(formattedBioPic);
 var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.message)
 $("#header").append(formattedMessage);
 
-//if (bio.skills.length > 0) {
-//  $("#header").append(HTMLskillsStart);
-//  for (var i = bio.skills.length() - 1; bio.skills >= 0; i = i -1) {
-//  	  var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-//  $("#header").append(formattedSkill);	
-//  }
 
-//}; 
+// if statement that adds skills
+if (bio.skills.length > 0) {
+  $("#header").append(HTMLskillsStart);
+  for (skill in bio.skills) {
+  var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
+  $("#skills").append(formattedSkill);	
+  }
+
+}; 
 
 //Lesson 2 exercises
 
@@ -194,12 +196,86 @@ for (country in countries) {
 // back to the resume building
 
 
-for (job in work.jobs) {
+
+var displayWork = function() {
+	for (job in work.jobs) {
 	$("#workExperience").append(HTMLworkStart);
 	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
 	var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
 	var formattedEmployerTitle = formattedEmployer + formattedTitle;	
 	$(".work-entry:last").append(formattedEmployerTitle);
+	
+	var formattedLocation = HTMLworkLocation.replace("%data%",work.jobs[job].location)
+	$("#WorkExperience").append(formattedLocation);
+	var formattedDates = HTMLworkDates.replace("%data%",work.jobs[job].dates)
+	$("#WorkExperience").append(formattedDates);
+	var formattedDescription = HTMLworkDescription.replace("%data%",work.jobs[job].description)
+	$("#WorkExperience").append(formattedDescription);
+	var formattedLocationDatesDescription= formattedLocation + formattedDates 
+	+ formattedDescription;	
+	$(".work-entry:last").append(formattedLocationDatesDescription);
 }
+}
+
+displayWork();
+
+var locationizer = function(work_obj) {
+	work = work_obj;
+	var workLocationArray = [];
+	for (var job in work.jobs) {
+		workLocationArray.push(work.jobs[job].location);
+		
+	}
+	return workLocationArray;
+}
+//make an international name change button
+var inName = function(name) {
+ 	nameArray = [];
+ 	var finalName = bio.name;
+	nameArray = finalName.trim().split(" ");
+	nameArray[0] = nameArray[0].slice(0,1).toUpperCase() + nameArray[0].slice(1).toLowerCase();
+	nameArray[2] = nameArray[2].toUpperCase();
+	finalName = nameArray.join(" ");
+	return finalName;
+
+
+	
+	var workLocationArray = [];
+	for (var job in work.jobs) {
+		workLocationArray.push(work.jobs[job].location);
+		
+	}
+	return workLocationArray;
+}
+$("#main").append(internationalizeButton);
+
+projects.display = function() {
+	for (project in projects.projects) {
+	$("#projects").append(HTMLprojectStart);
+
+	var formattedTitle = HTMLprojectTitle.replace("%data%",projects.projects[project].title)
+	$(".project-entry:last").append(formattedTitle);
+	
+	var formattedDates = HTMLprojectDates.replace("%data%",projects.projects[project].dates)
+	$(".project-entry:last").append(formattedDates);
+
+	var formattedDescription = HTMLprojectDescription.replace("%data%",projects.projects[project].description)
+	$(".project-entry:last").append(formattedDescription);
+
+		if (projects.projects[project].images.length > 0) {
+			for (image in projects.projects[project].images) {
+			var formattedImage = HTMLprojectImage.replace("%data%",projects.projects[project].images[image])
+			$(".project-entry:last").append(formattedImage);
+	}
+	}
+}
+}
+
+
+projects.display();
+
+$("#main").append(googleMap);
+$("#mapDiv").append(googleMap);
+
 
 
