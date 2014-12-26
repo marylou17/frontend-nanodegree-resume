@@ -144,6 +144,16 @@ function initializeMap() {
     return locations;
   }
 
+// Add locations to an array for the map
+var locationizer = function(work_obj) {
+  work = work_obj;
+  var workLocationArray = [];
+  for (var job in work.jobs) {
+    workLocationArray.push(work.jobs[job].location);  
+  }
+  return workLocationArray;
+}
+
   /*
   createMapMarker(placeData) reads Google Places search results to create map pins.
   placeData is the object returned from search results containing information

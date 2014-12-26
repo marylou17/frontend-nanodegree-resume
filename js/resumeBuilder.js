@@ -318,15 +318,7 @@ var education = {
 
 }
 
-// Add locations to an array for the map
-var locationizer = function(work_obj) {
-	work = work_obj;
-	var workLocationArray = [];
-	for (var job in work.jobs) {
-		workLocationArray.push(work.jobs[job].location);	
-	}
-	return workLocationArray;
-}
+
 var renderResume = function() {
 	bio.display();
 	work.display();
