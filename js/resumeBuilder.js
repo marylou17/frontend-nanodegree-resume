@@ -9,7 +9,7 @@ var bio = {
 		"mobile": "860.301.5739",
 		"email": "mlc@maryloucooke.com",
 		"github": "marylou17",
-		"twitter": "",
+		"twitter": "@maryloucooke17",
 		"location": "Connecticut"	
 		},
 	"welcomeMessage": "Here's a look at what I've been doing with my life",	
@@ -31,18 +31,20 @@ var bio = {
 		var formattedName = HTMLheaderName.replace("%data%", bio.inName(bio.intName));
 		$("#header").prepend(formattedName);
 		// Add contact information
-		var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile)
+		var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 		$("#topContacts, #letsConnect").append(formattedMobile);
-		var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email)
+		var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
 		$("#topContacts, #letsConnect").append(formattedEmail);
-		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github)
-		$("#topContacts, #letsConnect").append(formattedGithub);
-		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location)
+		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+		$("#topContacts, #letsConnect").append(formattedGithub);		
+		var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);		
+		$("#topContacts, #letsConnect").append(formattedTwitter);
+		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 		$("#topContacts, #letsConnect").append(formattedLocation);
 		// Add Photo and Message
-		var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic)
+		var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 		$("#header").append(formattedBioPic);
-		var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage)
+		var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
 		$("#header").append(formattedMessage);
 		// if statement that adds skills
 			if (bio.skills.length > 0) {
@@ -325,13 +327,16 @@ var locationizer = function(work_obj) {
 	}
 	return workLocationArray;
 }
+var renderResume = function() {
+	bio.display();
+	work.display();
+	projects.display();	
+	education.display();
+	$("#main").append(googleMap);
+	$("#mapDiv").append(googleMap);
+}
+renderResume();
 
-bio.display();
-work.display();
-projects.display();	
-education.display();
-$("#main").append(googleMap);
-$("#mapDiv").append(googleMap);
 
 
 
