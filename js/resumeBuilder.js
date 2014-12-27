@@ -14,7 +14,7 @@ var bio = {
 		},
 	"welcomeMessage": "Here's a look at what I've been doing with my life",	
 	"skills": ["javaScript", "HTML", "CSS", "Graphic Design", "Audio Composition"],	
-	"biopic": "images/fry.jpg",
+	"biopic": "images/maryLouCooke-bioPhoto.png",
 	"inName": function(name) {
 	 	nameArray = [];
 	 	var intName = bio.name;
@@ -31,9 +31,8 @@ var bio = {
 		$("#header").prepend(formattedRole);
 		var formattedName = HTMLheaderName.replace("%data%", bio.inName(bio.intName));
 		$("#header").prepend(formattedName);
-		// Add Photo and Message
-		var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
-		$("#header").append(formattedMessage);		
+
+	
 		var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 		$("#header").append(formattedBioPic);
 		// if statement that adds skills
@@ -44,7 +43,8 @@ var bio = {
 	  			$("#header").append(formattedSkill);	
   			}
 		}		
-
+		var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
+		$("#header").append(formattedMessage);	
 		// Add contact information
 		var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 		$("#topContacts, #letsConnect").append(formattedMobile);
@@ -101,12 +101,12 @@ var projects = {
 	"title": "Computer Graphics",
 	"dates": "2014",
 	"description": "Adobe InDesign, Illustrator, and PhotoShop Projects",
-	"images": ["images/edwardianScriptAnimal-pheonix.png", "images/illustratedPhoto.png", "images/bookCover-one-fine-day-brookmyre-med.png"]
+	"images": ["images/edwardianScriptAnimal-pheonix.png", "images/PageofText-minyaNovelle.png"]
 	},
 	{
 	"title": "Web Design",
 	"dates": "2014",
-	"description": "Tourism Website for the town of Chester, CT",
+	"description": "Tourism Website for the town of Chester, CT and for my own site at maryloucooke.com",
 	"images": ["images/visitChesterWebsite.png", "images/mlcWebsite.jpg"]
 	},
 	{
@@ -157,7 +157,7 @@ var education = {
 	"name": "Berklee College of Music",
 	"location": "Boston, MA",
 	"degree": "Songwriting Master Certificate",
-	"majors": ["Songwriting", "Arranging", "Music Production"],
+	"majors": ["Songwriting, Arranging and Music Production"],
 	"dates": 2012,
 	"url": "http://online.berklee.edu"
 	}
@@ -207,73 +207,73 @@ var education = {
 	},
 	{			
 		"title": "Arranging 1: Rhythm Section",
-		"school": "Berkleemusic.com",
+		"school": "berkleemusic.com",
 		"date": 2009,
 		"url": "http://online.berklee.edu/courses/arranging-1-rhythm-section"
 	},
 	{			
 		"title": "Desktop Music Production for PC",
-		"school": "Berkleemusic.com",
+		"school": "berkleemusic.com",
 		"date": 2010,
 		"url": "http://online.berklee.edu/courses/desktop-music-production-for-pc"
 	},
 	{			
 		"title": "Pro Tools 101",
-		"school": "Berkleemusic.com",
+		"school": "berkleemusic.com",
 		"date": 2010,
 		"url": "http://online.berklee.edu/courses/pro-tools-101"
 	},
 	{			
 		"title": "Music Production Analysis",
-		"school": "Berkleemusic.com",
+		"school": "berkleemusic.com",
 		"date": 2013,
 		"url": "http://online.berklee.edu/courses/music-production-analysis"
 	},
 	{			
 		"title": "Songwriting: Writing Hit Songs",
-		"school": "Berkleemusic.com",
+		"school": "berkleemusic.com",
 		"date": 2010,
 		"url": "http://online.berklee.edu/courses/songwriting-writing-hit-songs"
 	},
 	{			
 		"title": "Songwriting: Harmony",
-		"school": "Berkleemusic.com",
+		"school": "berkleemusic.com",
 		"date": 2011,
 		"url": "http://online.berklee.edu/courses/songwriting-harmony"
 	},
 	{			
 		"title": "Songwriting: Melody",
-		"school": "Berkleemusic.com",
+		"school": "berkleemusic.com",
 		"date": 2012,
 		"url": "http://online.berklee.edu/courses/songwriting-melody"
 	},
 	{			
 		"title": "Songwriting for Film and TV",
-		"school": "Berkleemusic.com",
+		"school": "berkleemusic.com",
 		"date": 2010,
 		"url": "http://online.berklee.edu/courses/songwriting-for-film-and-tv"
 	},
 	{			
 		"title": "Lyric Writing: Writing From the Title",
-		"school": "Berkleemusic.com",
+		"school": "berkleemusic.com",
 		"date": 2012,
 		"url": "http://online.berklee.edu/courses/lyric-writing-writing-from-the-title"
 	},
 	{			
 		"title": "Lyric Writing: Tools and Strategies",
-		"school": "Berkleemusic.com",
+		"school": "berkleemusic.com",
 		"date": 2011,
 		"url": "http://online.berklee.edu/courses/lyric-writing-tools-and-strategies"
 	},
 	{			
 		"title": "Lyric Writing: Writing Lyrics to Music",
-		"school": "Berkleemusic.com",
+		"school": "berkleemusic.com",
 		"date": 2011,
 		"url": "http://online.berklee.edu/courses/lyric-writing-writing-lyrics-to-music"
 	},
 	{			
 		"title": "Commercial Songwriting Techniques",
-		"school": "Berkleemusic.com",
+		"school": "berkleemusic.com",
 		"date": 2012,
 		"url": "http://online.berklee.edu/courses/commercial-songwriting-techniques"
 	}
@@ -286,8 +286,7 @@ var education = {
 		
 		var formattedLocation = HTMLschoolLocation.replace("%data%",education.schools[school].location);
 		$(".education-entry:last").append(formattedLocation);
-		var formattedUrl = HTMLschoolLocation.replace("%data%",education.schools[school].url);
-		$(".education-entry:last").append(formattedUrl);
+
 		var formattedDegree = HTMLschoolDegree.replace("%data%",education.schools[school].degree);
 		$(".education-entry:last").append(formattedDegree);
 			if (education.schools[school].majors.length > 0) {
@@ -297,20 +296,24 @@ var education = {
 				}
 			}
 		var formattedDates = HTMLschoolDates.replace("%data%",education.schools[school].dates);
-		$(".education-entry:last").append(formattedDates);			
-		}
-		for (course in education.onlineCourses) {
-		var formattedTitle = HTMLonlineTitle.replace("%data%",education.onlineCourses[course].title);
-		$(".education-entry:last").append(formattedTitle);			
-		var formattedSchool = HTMLonlineSchool.replace("%data%",education.onlineCourses[course].school);
-		$(".education-entry:last").append(formattedSchool);
-		var formattedDates = HTMLonlineDates.replace("%data%",education.onlineCourses[course].date);
-		$(".education-entry:last").append(formattedDates);
-		var formattedUrl = HTMLonlineURL.replace("%data%",education.onlineCourses[course].url);
+		$(".education-entry:last").append(formattedDates);		
+		var formattedUrl = HTMLschoolLocation.replace("%data%",education.schools[school].url);
 		$(".education-entry:last").append(formattedUrl);
+		}
+		$(".education-entry:last").append(HTMLonlineClasses);	
+		for (course in education.onlineCourses) {
+
+		var formattedTitle = HTMLonlineTitle.replace("%data%",education.onlineCourses[course].title);
+		$("#onlineClass:last").append(formattedTitle);			
+		var formattedSchool = HTMLonlineSchool.replace("%data%",education.onlineCourses[course].school);
+		$("#onlineClass:last").append(formattedSchool);
+		var formattedDates = HTMLonlineDates.replace("%data%",education.onlineCourses[course].date);
+		$("#onlineClass:last").append(formattedDates);
+		var formattedUrl = HTMLonlineURL.replace("%data%",education.onlineCourses[course].url);
+		$("#onlineClass:last").append(formattedUrl);
 
 		}
-		$("#education").append(HTMLonlineClasses);	
+
 	}
 
 }

@@ -1,28 +1,66 @@
 * {
   padding:0;
   margin:0;
-  font-family: 'Roboto', sans-serif;
+  list-style-type: none;
+
+}
+
+body {
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+  max-width: 1232px;
+  margin: 0 auto 0 auto;
+  font-size: 22px;
+  font-weight: 100;
+  color: rgba(247, 217, 45, 1.00);
 }
 
 .clearfix {
   overflow: auto;
 }
+  #onlineClass {
+  -moz-column-count: 3;
+  -moz-column-gap: 1em;
+  -moz-column-rule: 1px dotted black;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 1em;
+  -webkit-column-rule: 1px dotted black;
+  column-count: 3;
+  column-gap: 5px;
+  column-rule: 1px dotted black;
+  padding-left: 1.5%;
+  padding-right: 1.5%; 
+}
 
 .education-entry, .work-entry, .project-entry {
   padding-left: 5%;
   padding-right: 5%;
+  padding-bottom: 5%;
+
+}
+
+.project-entry {
+  border-bottom: 1px dotted gray;  
+  padding-top:42px; 
+
+}
+#projects {
+  border: 1px dotted gray;
+}
+
+.paddingTop {
+  padding-top: 30px;
 }
 
 h1 {
-  font-size: 40px;
-  color: #F5A623;
+  font-weight: 100;
+  font-size: 60px;
+  color: rgba(238, 162, 33, 1.00);
   line-height: 48px;
   display: inline;
 }
 
 h2 {
-  font-weight: bold;
-  font-size: 24px;
+  font-size: 34px;
   color: #999999;
   line-height: 29px;
   padding: 10px;
@@ -30,19 +68,19 @@ h2 {
 
 h3 {
   font-style: italic;
-  font-size: 20px;
-  color: #000000;
+  font-size: 30px;
   line-height: 22px;
 }
 
 h4 {
-  font-weight: bold;
+
   font-size: 14px;
   color: #4A4A4A;
   line-height: 17px;
 }
 
 h2, h3, h4, h5 {
+  font-weight: 100;
   padding:10px;
   padding-left: 5%;
   padding-right: 5%;
@@ -55,11 +93,12 @@ h2, h3, h4, h5 {
   color: #999999;
   line-height: 16px;
   float: left;
+  padding-right: 24px;
 }
 
 .location-text {
   font-style: italic;
-  font-size: 14px;
+  font-size: 18px;
   color: #999999;
   line-height: 16px;
   float: right;
@@ -67,13 +106,13 @@ h2, h3, h4, h5 {
 }
 
 p {
-  font-size: 14px;
-  color: #333333;
+  font-size: 18px;
+  color: black;
   line-height: 21px;
 }
 
 a {
-  color: #1199C3;
+  color: rgba(188, 204, 50, 1.00);
   text-decoration: none;
   margin-top: 10px;
   display: block;
@@ -81,26 +120,35 @@ a {
 
 .welcome-message {
   font-style: italic;
-  font-size: 18px;
-  color: #F3F3F3;
+  font-size: 28px;
+  color: rgba(178, 53, 48, 1.00);
   line-height: 28px;
+  float:right;
 }
 
 #skillsH3 {
   color: #F5AE23;
   display: none;
+  padding-top: 22px;
 }
 
+.onlineClassH3 {
+  font-style: italic;
+  font-size: 28px;
+  color: rgba(178, 53, 48, 1.00);
+  line-height: 28px;
+  float:left;  
+  padding-top: 40px;
+}
 .orange {
-  background-color: #F5AE23;
+  background-color: rgba(238, 162, 33, 1.00);
 }
 
 .orange-text {
-  color: #F5AE23;
+  color: rgba(238, 162, 33, 1.00);
 }
 
 .white-text {
-  font-weight: bold;
   color: #FFFFFF;
 }
 
@@ -116,7 +164,7 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: rgba(136,136,136,1.00);
 }
 
 .flex-box {
@@ -130,18 +178,20 @@ a {
 
 .center-content {
   padding-top: 2.5%;
-  padding-left: 5%;
+  padding-left: 10%;
   padding-right: 5%;
   padding-bottom: 2.5%
 }
+
 
 ul {
   list-style-type: none;
 }
 
+
 .biopic {
   float: left;
-  padding: 10px;
+  padding: 10px 40px 10px 10px;
   width: 200px;
   display: none;
 }
@@ -164,21 +214,27 @@ img {
 
 span {
   padding: 5px;
+
 }
 
 #letsConnect {
   text-align: center;
+  background-color: rgba(178, 53, 48, 1.00);
+  color: rgba(238, 162, 33, 1.00);
+
 }
 
 @media only screen and (max-width: 1024px) {
   #letsConnect {
     margin-top: 5%;
   }
+
 }
 
 @media only screen and (max-width:900px) {
   .biopic {
     width: 175px;
+
   }
 }
 
@@ -192,19 +248,25 @@ span {
   .welcome-message {
     display: none;
   }
+#onlineClass {
+  -moz-column-count: 1;
+  -webkit-column-count: 1;
+  column-count: 1;
+  }
 }
 
 #map {
   display: block;
+  width: 100%;
   height: 100%;
-  margin-left: 5%;
-  margin-right: 5%;
+
 }
 
 #mapDiv {
   height: 400px;
   width: 100%;
   padding-bottom: 5%;
+  border: 1px dotted gray;
 }
 
 @media only screen and (min-width: 750px) {
