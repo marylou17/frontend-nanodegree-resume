@@ -1,0 +1,8 @@
+resources-used.txt
+
+To complete this project:
+  I referenced w3school's css pages to style the resume
+  Studied and did the exericises in the Intro to Java Script class on Udacity
+  Also the 'Using Git and Github' class
+  I referenced other websites for ideas on design
+  
