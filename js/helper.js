@@ -144,15 +144,7 @@ function initializeMap() {
     return locations;
   }
 
-// Add locations to an array for the map
-var locationizer = function(work_obj) {
-  work = work_obj;
-  var workLocationArray = [];
-  for (var job in work.jobs) {
-    workLocationArray.push(work.jobs[job].location);  
-  }
-  return workLocationArray;
-}
+
 
   /*
   createMapMarker(placeData) reads Google Places search results to create map pins.
@@ -183,6 +175,8 @@ var locationizer = function(work_obj) {
 
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
+
+      infoWindow.open(map,marker);
       // your code goes here!
     });
 

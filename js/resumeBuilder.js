@@ -2,7 +2,7 @@
 
 
 var bio = {
-	"name": "Mary Lou Cooke",
+	"name": "mary lou cooke",
 	"role": "Web Designer & Developer",
 
 	"contacts": {
@@ -20,6 +20,7 @@ var bio = {
 	 	var intName = bio.name;
 		nameArray = intName.trim().split(" ");
 		nameArray[0] = nameArray[0].slice(0,1).toUpperCase() + nameArray[0].slice(1).toLowerCase();
+		nameArray[1] = nameArray[1].slice(0,1).toUpperCase() + nameArray[1].slice(1).toLowerCase();		
 		nameArray[2] = nameArray[2].toUpperCase();
 		intName = nameArray.join(" ");
 		return intName;
@@ -30,6 +31,20 @@ var bio = {
 		$("#header").prepend(formattedRole);
 		var formattedName = HTMLheaderName.replace("%data%", bio.inName(bio.intName));
 		$("#header").prepend(formattedName);
+		// Add Photo and Message
+		var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
+		$("#header").append(formattedMessage);		
+		var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
+		$("#header").append(formattedBioPic);
+		// if statement that adds skills
+		if (bio.skills.length > 0) {
+	 		$("#header").append(HTMLskillsStart);
+	 		for (skill in bio.skills) {
+	  			var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
+	  			$("#header").append(formattedSkill);	
+  			}
+		}		
+
 		// Add contact information
 		var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 		$("#topContacts, #letsConnect").append(formattedMobile);
@@ -41,19 +56,8 @@ var bio = {
 		$("#topContacts, #letsConnect").append(formattedTwitter);
 		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 		$("#topContacts, #letsConnect").append(formattedLocation);
-		// Add Photo and Message
-		var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
-		$("#header").append(formattedBioPic);
-		var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
-		$("#header").append(formattedMessage);
-		// if statement that adds skills
-			if (bio.skills.length > 0) {
-		 		$("#header").append(HTMLskillsStart);
-	 			for (skill in bio.skills) {
-	 	 		var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
-		  		$("#skills").append(formattedSkill);	
-	  		}
-		}
+
+
 	}
 }
 
@@ -78,47 +82,38 @@ var work = {
 		for (job in work.jobs) {
 			$("#workExperience").append(HTMLworkStart);
 			var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+			$(".work-entry:last").append(formattedEmployer);			
 			var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-			var formattedEmployerTitle = formattedEmployer + formattedTitle;	
-			$(".work-entry:last").append(formattedEmployerTitle);			
-			var formattedLocation = HTMLworkLocation.replace("%data%",work.jobs[job].location)
-			$("#WorkExperience").append(formattedLocation);
-			var formattedDates = HTMLworkDates.replace("%data%",work.jobs[job].dates)
-			$("#WorkExperience").append(formattedDates);
-			var formattedDescription = HTMLworkDescription.replace("%data%",work.jobs[job].description)
-			$("#WorkExperience").append(formattedDescription);
-			var formattedLocationDatesDescription= formattedLocation + formattedDates 
-			+ formattedDescription;	
-			$(".work-entry:last").append(formattedLocationDatesDescription);
-			}
-		}		
+			$(".work-entry:last").append(formattedTitle);					
+			var formattedLocation = HTMLworkLocation.replace("%data%",work.jobs[job].location);
+			$(".work-entry:last").append(formattedLocation);			
+			var formattedDates = HTMLworkDates.replace("%data%",work.jobs[job].dates);
+			$(".work-entry:last").append(formattedDates);
+			var formattedDescription = HTMLworkDescription.replace("%data%",work.jobs[job].description);
+			$(".work-entry:last").append(formattedDescription);
+		}
+	}		
 }
 
 var projects = {
 	"projects": [
 	{
-	"title": "maryloucooke.com",
-	"dates": "2014",
-	"description": "Personal portfolio website",
-	"images": ["images/mlcLogo.png"]
-	},
-	{
 	"title": "Computer Graphics",
 	"dates": "2014",
 	"description": "Adobe InDesign, Illustrator, and PhotoShop Projects",
-	"images": ["images/edwardianScriptAnimal-pheonix.png"]	
+	"images": ["images/edwardianScriptAnimal-pheonix.png", "images/illustratedPhoto.png", "images/bookCover-one-fine-day-brookmyre-med.png"]
 	},
 	{
 	"title": "Web Design",
 	"dates": "2014",
 	"description": "Tourism Website for the town of Chester, CT",
-	"images": ["images/visitChesterWebsite.png"]
+	"images": ["images/visitChesterWebsite.png", "images/mlcWebsite.jpg"]
 	},
 	{
 	"title": "Digital Multimedia",
 	"dates": "2014",
 	"description": "Animated and still photo videos with original music",
-	"images": ["images/designPrincipals.png"]
+	"images": ["images/infographicsScreen.png", "images/goodbyeHeartProductions.png"]
 	}	
 	],
 	"display": function() {
@@ -145,7 +140,7 @@ var education = {
 	{
 	"name": "Middlesex Community College",
 	"location": "Middletown, CT",
-	"degree": "Associates",
+	"degree": "Associate in Science Degree",
 	"majors": ["Multi-media Arts"],
 	"dates": 2015,
 	"url": "http://mxcc.edu"
@@ -286,38 +281,39 @@ var education = {
 	"display": function() {
 		for (school in education.schools) {
 		$("#education").append(HTMLschoolStart);
-		var formattedName = HTMLschoolName.replace("%data%",education.schools[school].name)
+		var formattedName = HTMLschoolName.replace("%data%",education.schools[school].name);
 		$(".education-entry:last").append(formattedName);		
-		var formattedLocation = HTMLschoolLocation.replace("%data%",education.schools[school].location)
+		
+		var formattedLocation = HTMLschoolLocation.replace("%data%",education.schools[school].location);
 		$(".education-entry:last").append(formattedLocation);
-		var formattedUrl = HTMLschoolLocation.replace("%data%",education.schools[school].url)
+		var formattedUrl = HTMLschoolLocation.replace("%data%",education.schools[school].url);
 		$(".education-entry:last").append(formattedUrl);
-		var formattedDegree = HTMLschoolDegree.replace("%data%",education.schools[school].degree)
+		var formattedDegree = HTMLschoolDegree.replace("%data%",education.schools[school].degree);
 		$(".education-entry:last").append(formattedDegree);
 			if (education.schools[school].majors.length > 0) {
 				for (major in education.schools[school].majors) {
-				var formattedMajors = HTMLschoolMajor.replace("%data%",education.schools[school].majors[major])
+				var formattedMajors = HTMLschoolMajor.replace("%data%",education.schools[school].majors[major]);
 				$(".education-entry:last").append(formattedMajors);
-			}
+				}
 			}
 		var formattedDates = HTMLschoolDates.replace("%data%",education.schools[school].dates);
 		$(".education-entry:last").append(formattedDates);			
 		}
 		for (course in education.onlineCourses) {
-		var formattedTitle = HTMLonlineTitle.replace("%data%",education.onlineCourses[course].title)
+		var formattedTitle = HTMLonlineTitle.replace("%data%",education.onlineCourses[course].title);
 		$(".education-entry:last").append(formattedTitle);			
-		var formattedSchool = HTMLonlineSchool.replace("%data%",education.onlineCourses[course].school)
+		var formattedSchool = HTMLonlineSchool.replace("%data%",education.onlineCourses[course].school);
 		$(".education-entry:last").append(formattedSchool);
-		var formattedDates = HTMLonlineDates.replace("%data%",education.onlineCourses[course].date)
+		var formattedDates = HTMLonlineDates.replace("%data%",education.onlineCourses[course].date);
 		$(".education-entry:last").append(formattedDates);
-		var formattedUrl = HTMLonlineURL.replace("%data%",education.onlineCourses[course].url)
+		var formattedUrl = HTMLonlineURL.replace("%data%",education.onlineCourses[course].url);
 		$(".education-entry:last").append(formattedUrl);
+
 		}
 		$("#education").append(HTMLonlineClasses);	
 	}
 
 }
-
 
 var renderResume = function() {
 	bio.display();
@@ -328,7 +324,6 @@ var renderResume = function() {
 	$("#mapDiv").append(googleMap);
 }
 renderResume();
-
 
 
 
